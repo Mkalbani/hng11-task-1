@@ -15,14 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     index = (index + 1) % goals.length;
   }, 2000);
 
-  const carouselContainer = document.querySelector('.carousel'); // Select the carousel container
+  const carouselContainer = document.querySelector('.carousel'); 
+  let isPaused = false; 
 
   carouselContainer.addEventListener('mouseover', () => {
-    clearInterval(intervalId); // Stop interval on mouseover
+    isPaused = true; 
+    clearInterval(intervalId);
   });
 
   carouselContainer.addEventListener('mouseout', () => {
-    intervalId = setInterval(() => { // Restart interval on mouseout
+    if (!isPaused) { 
+      return; 
+    }
+    isPaused = false; 
+    intervalId = setInterval(() => {
       goals.forEach((goal, i) => {
         goal.style.transform = `translateX(-${index * 100}%)`;
       });
@@ -30,4 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
   });
 
+  carouselContainer.addEventListener('click', () => {
+    isPaused = !isPaused; 
+    if (isPaused) {
+      clearInterval(intervalId);
+    } else {
+      intervalId = setInterval(() => {
+        goals.forEach((goal, i) => {
+          goal.style.transform = `translateX(-${index * 100}%)`;
+        });
+        index = (index + 1) % goals.length;
+      }, 2000);
+    }
+  });
 });
