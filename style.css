@@ -61,6 +61,10 @@ small {
   box-shadow: 20px 20px;
 }
 
+.fa-envelope {
+  color: white;
+}
+
 .content {
   width: 50%;
   padding: 20px;
