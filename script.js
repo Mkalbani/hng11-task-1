@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       goal.style.transform = `translateX(-${index * 100}%)`;
     });
     index = (index + 1) % goals.length;
-  }, 3000);
+  }, 2600);
 
   const carouselContainer = document.querySelector('.carousel'); 
   let isPaused = false; 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         goal.style.transform = `translateX(-${index * 100}%)`;
       });
       index = (index + 1) % goals.length;
-    }, 3000);
+    }, 2600);
   });
 
   carouselContainer.addEventListener('click', () => {
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
           goal.style.transform = `translateX(-${index * 100}%)`;
         });
         index = (index + 1) % goals.length;
-      }, 3000);
+      }, 2600);
     }
   });
 });
